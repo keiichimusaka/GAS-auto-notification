@@ -1,0 +1,18 @@
+function shiftReminder() {
+  // LINEで自動通知する内容。
+  var content = "\n【学習記録入力のお願い】\n\n本日もお疲れ様でした！\n\nこちらのスプレットシートに学習記録の入力をお願いします。\n\n[https://forms.gle/oaMJxPuA2Y4LDTU29]";
+    sendHttpPost_shiftReminder(content);
+    }
+ 
+// LINE Notifyを利用するための関数
+function sendHttpPost_shiftReminder(content){
+  var token = ['sgOEp7w2fc8Ste7CgwFaCMFoV6pP9ODY2R6QktLPT0q']; //LINEで自動通知をする宛先のトークン。
+  var options =
+   {
+     "method"  : "post",
+     "payload" : {"message": content,
+                  }, 
+     "headers" : {"Authorization" : "Bearer "+ token}
+   };
+   UrlFetchApp.fetch("https://notify-api.line.me/api/notify", options);
+}
